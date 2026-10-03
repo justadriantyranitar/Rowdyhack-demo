@@ -2,67 +2,215 @@
   box-sizing: border-box;
 }
 
-body {
-  min-height: 100vh;
-  margin: 0;
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-  background: #f1f5f9;
-  color: #172033;
-  font-family: system-ui, sans-serif;
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #080e18;
+  color: #e7edf6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
-.counter {
-  width: min(100%, 26rem);
-  padding: 2rem;
-  border-radius: 1rem;
-  background: white;
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 3rem 1rem;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(30 72 104 / 28%), transparent 55%),
+    #080e18;
+}
+
+.game-shell {
+  width: min(100%, 46rem);
+  margin: 0 auto;
+}
+
+.masthead {
+  margin-bottom: 2rem;
   text-align: center;
-  box-shadow: 0 0.75rem 2rem rgb(23 32 51 / 10%);
+}
+
+.eyebrow,
+.room-count,
+.clue-label {
+  color: #5ee0c0;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
 }
 
 h1 {
-  margin-top: 0;
+  margin: 0.4rem 0 0.5rem;
+  font-size: clamp(2.8rem, 9vw, 4.5rem);
+  letter-spacing: -0.07em;
+  line-height: 1;
 }
 
-.count {
-  margin: 0.5rem 0 1.5rem;
-  color: #2563eb;
-  font-size: 4rem;
-  font-weight: 700;
+h1 span {
+  color: #5ee0c0;
 }
 
-.buttons {
+.intro {
+  max-width: 34rem;
+  margin: 1rem auto 0;
+  color: #a8b6c9;
+  line-height: 1.6;
+}
+
+.game-panel {
+  padding: clamp(1.25rem, 5vw, 2.25rem);
+  border: 1px solid #253449;
+  border-radius: 1rem;
+  background: rgb(16 25 39 / 94%);
+  box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 35%);
+}
+
+.game-topline {
   display: flex;
-  justify-content: center;
-  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.room-count {
+  margin: 0;
+}
+
+.strikes {
+  margin: 0;
+  color: #a8b6c9;
+  font-size: 0.875rem;
+}
+
+.progress-track {
+  height: 0.35rem;
+  margin: 1rem 0 2rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #253449;
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: #5ee0c0;
+  transition: width 220ms ease;
+}
+
+h2 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.scene {
+  margin: 0;
+  color: #c1cede;
+  line-height: 1.65;
+}
+
+.clue {
+  margin: 1.4rem 0 1.8rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid #5ee0c0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: #142438;
+}
+
+.clue-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.65rem;
+}
+
+.clue p:last-child {
+  margin: 0;
+  color: #d5e0ee;
+  line-height: 1.55;
+}
+
+h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.choices {
+  display: grid;
+  gap: 0.65rem;
 }
 
 button {
-  padding: 0.75rem 1rem;
-  border: 0;
-  border-radius: 0.5rem;
-  background: #2563eb;
-  color: white;
   font: inherit;
-  cursor: pointer;
 }
 
-button:hover {
-  background: #1d4ed8;
+.choice-button,
+.restart-button {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #35465d;
+  border-radius: 0.55rem;
+  background: #121e2e;
+  color: #e7edf6;
+  text-align: left;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.choice-button:hover,
+.restart-button:hover {
+  transform: translateY(-1px);
+  border-color: #5ee0c0;
+  background: #192b3d;
 }
 
 button:focus-visible {
-  outline: 3px solid #93c5fd;
+  outline: 3px solid #5ee0c0;
   outline-offset: 3px;
 }
 
-button.reset {
-  background: #e2e8f0;
-  color: #172033;
+.choice-button:disabled {
+  cursor: default;
+  opacity: 0.72;
 }
 
-button.reset:hover {
-  background: #cbd5e1;
+.feedback {
+  min-height: 1.5rem;
+  margin: 1rem 0 0;
+  color: #ffd37a;
+  line-height: 1.55;
+}
+
+.feedback.success {
+  color: #78e5b5;
+}
+
+.restart-button {
+  margin-top: 1rem;
+  border-color: #5ee0c0;
+  background: #17382f;
+  text-align: center;
+  font-weight: 700;
+}
+
+footer {
+  padding: 1rem 0;
+  color: #8191a7;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+footer p {
+  max-width: 38rem;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

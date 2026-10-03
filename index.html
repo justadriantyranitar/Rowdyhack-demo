@@ -3,19 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Click Counter</title>
+    <meta
+      name="description"
+      content="A fictional escape-room game about spotting social-engineering warning signs."
+    />
+    <title>Signal Lost | A Security Escape Room</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <main class="counter">
-      <h1>My Click Counter</h1>
-      <p>You have clicked the button:</p>
-      <p class="count" id="count" aria-live="polite">0</p>
-      <div class="buttons">
-        <button id="count-button" type="button">Add one</button>
-        <button id="reset-button" type="button" class="reset">Reset</button>
-      </div>
+    <main class="game-shell">
+      <header class="masthead">
+        <p class="eyebrow">A FICTIONAL SECURITY AWARENESS GAME</p>
+        <h1>Signal <span>Lost</span></h1>
+        <p class="intro">
+          Three rooms. Three safe exits. Five social-engineering traps.
+          Slow down, check the clues, and find your way out.
+        </p>
+      </header>
+
+      <section class="game-panel" aria-labelledby="room-title">
+        <div class="game-topline">
+          <p class="room-count" id="room-count">ROOM 1 OF 3</p>
+          <p class="strikes" id="strikes">Alerts: 0 / 3</p>
+        </div>
+        <div class="progress-track" aria-label="Game progress">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div id="game-content" aria-live="polite">
+          <h2 id="room-title"></h2>
+          <p class="scene" id="scene"></p>
+          <div class="clue">
+            <p class="clue-label">CLUE</p>
+            <p id="clue"></p>
+          </div>
+          <h3>What do you do?</h3>
+          <div class="choices" id="choices"></div>
+          <p class="feedback" id="feedback" role="status"></p>
+        </div>
+
+        <button class="restart-button" id="restart-button" type="button" hidden>
+          Start over
+        </button>
+      </section>
+
+      <footer>
+        <p>
+          Training note: These scenarios are fictional. In real situations,
+          verify requests through a trusted, independently known channel.
+        </p>
+      </footer>
     </main>
   </body>
 </html>
